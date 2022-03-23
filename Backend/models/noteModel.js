@@ -7,19 +7,21 @@ const noteSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
-    product: {
-      type: String,
-      required: [true, 'Please select a product'],
-      enum: ['iPhone', 'MacBook Pro', 'iMac', 'iPad'],
+    ticket: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'Ticket',
     },
-    description: {
+    text: {
       type: String,
-      required: [true, 'Please add a description of the issue'],
+      required: [true, 'Please add a note'],
     },
-    status: {
+    isStaff: {
+      type: Boolean,
+      default: false,
+    },
+    staffId: {
       type: String,
-      enum: ['new', 'open', 'closed'],
-      default: 'new',
     },
   },
   {
